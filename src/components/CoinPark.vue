@@ -365,8 +365,9 @@
 
                 var p = [];
                 for (var i = 0; i < count; i ++ ){
-                	p.push(this.createOrder(this.currentPair, 2, this.currentTradePrice, this.tradeCoinCount))
-                	p.push(this.createOrder(this.currentPair, 1, this.currentTradePrice, this.tradeCoinCount))
+                    let amountR=Math.floor(Math.random() * this.tradeCoinCount);
+                	p.push(this.createOrder(this.currentPair, 2, this.currentTradePrice, amountR))
+                	p.push(this.createOrder(this.currentPair, 1, this.currentTradePrice, amountR))
                 }
 
                 var tradeRes = await Promise.all(p);

@@ -2,6 +2,8 @@ let CryptoJS = require("crypto-js");
 let request = require("request");
 let _ = require("underscore");
 let toastr = require('toastr');
+let apiurl = 'https://api.bibox.com/v1/mdata';
+let biboxv1= 'https://api.bibox.com/v1/';
 
 let key = function () {
 	return window.localStorage.getItem('apikey')
@@ -140,7 +142,7 @@ let doApiRequest = function (url, cmds, callBack) {
 // public api
 
 let getDepth = async function (pair, size) {
-	let get_url = 'https://api.coinpark.cc/v1/mdata?cmd=depth&pair=' + pair + '&size=' + size;
+	let get_url = 'https://api.bibox.com/v1/mdata?cmd=depth&pair=' + pair + '&size=' + size;
 	return doGet(get_url)
 };
 
@@ -175,7 +177,7 @@ let getDeals = function (pair, size) {
 			}
 		}
 	];
-	let url = 'https://api.coinpark.cc/v1/mdata';
+	let url = apiurl;
 	return doApiRequest(url, cmds);
 };
 
@@ -191,7 +193,7 @@ let getKline = function (pair, period, size) {
 			}
 		}
 	];
-	let url = 'https://api.coinpark.cc/v1/mdata';
+	let url = apiurl;
 	return doApiRequest(url, cmds);
 };
 
@@ -205,7 +207,7 @@ let getTicker = function (pair) {
 		}
 	];
 
-	let url = 'https://api.coinpark.cc/v1/mdata';
+	let url = apiurl;
 	return doApiRequest(url, cmds);
 };
 
@@ -219,7 +221,7 @@ let getMarket = function (pair) {
 		}
 	];
 
-	let url = 'https://api.coinpark.cc/v1/mdata';
+	let url = apiurl;
 	return doApiRequest(url, cmds);
 };
 
@@ -231,7 +233,7 @@ let getMarketAll = function () {
 		}
 	];
 
-	let url = 'https://api.coinpark.cc/v1/mdata';
+	let url = apiurl;
 	return doApiRequest(url, cmds);
 };
 
@@ -249,7 +251,7 @@ let getUserOrderPending = function (pair, account_type, page, size) {
 		}
 	];
 
-	let url = 'https://api.coinpark.cc/v1/orderpending';
+	let url = 'https://api.bibox.com/v1/orderpending';
 	return doApiRequestWithApikey(url, cmds);
 };
 
@@ -265,7 +267,7 @@ let getUserOrderHistory = function (pair, account_type, page, size) {
 			}
 		}
 	];
-	let url = 'https://api.coinpark.cc/v1/orderpending';
+	let url = 'https://api.bibox.com/v1/orderpending';
 	return doApiRequestWithApikey(url, cmds);
 };
 
@@ -276,6 +278,7 @@ let getUserOrderHistory = function (pair, account_type, page, size) {
 
 
 let newOrder = function (trade_order) {
+    //let amountR= Math.floor(Math.random() * trade_order.amount);
 	let cmds = [
 		{
 			cmd: "orderpending/trade",
@@ -291,7 +294,7 @@ let newOrder = function (trade_order) {
 			}
 		}
 	];
-	let url = 'https://api.coinpark.cc/v1/orderpending';
+	let url = 'https://api.bibox.com/v1/orderpending';
 	return doApiRequestWithApikey(url, cmds);
 };
 
@@ -304,7 +307,7 @@ let cancelOrder = function (orders_id) {
 			}
 		}
 	];
-	let url = 'https://api.coinpark.cc/v1/orderpending';
+	let url = 'https://api.bibox.com/v1/orderpending';
 	return doApiRequestWithApikey(url, cmds);
 };
 
@@ -317,7 +320,7 @@ let getUserAssets = function () {
 			}
 		}
 	];
-	let url = 'https://api.coinpark.cc/v1/transfer';
+	let url = 'https://api.bibox.com/v1/transfer';
 	return doApiRequestWithApikey(url, cmds);
 };
 
