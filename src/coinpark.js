@@ -152,10 +152,14 @@ let getMiddlePrice = async function (pair) {
 	var res = await getDepth(pair, 1);
     var ask1 = res.asks[0].price;
     var bid1 = res.bids[0].price;
+    var spread=ask1* 1e8 - bid1*1e8;
 
-    if (ask1* 1e8 - bid1 *1e8 >= 2) {
-		 middlePrice = parseFloat((parseFloat(ask1) + parseFloat(bid1))/2).toFixed(8);
-	}
+    if (( spread >= 3)&&((spread/(ask1* 1e8))>0.01)) {
+		 let middlePrice2 = parseFloat((parseFloat(ask1) + parseFloat(bid1))/2).toFixed(8);
+		 middlePrice =  (1+0.005*(Math.random() * 2 - 1) )*middlePrice2;//((ask1* 1e8 - bid1*1e8)/3)
+		 middlePrice = parseFloat(middlePrice).toFixed(8);
+		 //if (middlePrice==ask1
+	}    //
 
     return {
     	ask1 : ask1,

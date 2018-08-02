@@ -264,7 +264,7 @@
 				tradeCoinCount: 1,
 				tradePairCount: 3, // 每次成交对数
 				intervalTime: 10,
-				resetIntervalTime: 60 * 5,
+				resetIntervalTime: 60 * 600,
 
 				workingInterval: null,
 				resetInterval: null,
