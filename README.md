@@ -1,6 +1,6 @@
 # coinpark
 
-A simple web application for mining on [coinpack.cc](https://www.coinpark.cc/)
+A simple web application for mining on [bibox](https://bibox.com/)
 
 ![coinpark](https://github.com/jianxinss/coinpark/blob/master/snap.jpg?raw=true "coinpark,Social Coding")
 
